@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ENDPOINT = 'http://localhost:3001/api/persons'
+const ENDPOINT = 'https://cryptic-sea-40817.herokuapp.com/api/persons'
 
 export const getPersons = () => {
     return axios
