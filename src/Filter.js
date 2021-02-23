@@ -3,9 +3,11 @@ export const Filter = ({filter, setFilter}) => {
         setFilter(event.target.value)
     }
 
-    return (
-        <div>
-            filter shown with: <input type='text' onChange={handleFilter} value={filter}/>
-        </div>
-    )
+    return <input 
+        className="filter" 
+        placeholder="Search..." 
+        type='text' 
+        onChange={handleFilter} 
+        value={filter}
+    />
 }

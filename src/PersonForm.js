@@ -1,4 +1,5 @@
 import {postPerson, updatePerson} from "./service";
+import './styles/PersonForm.css'
 
 export const PersonForm = ({newPerson, setNewPerson, persons, setPersons, setNotification, INITIAL_NEW_PERSON}) => {
 
@@ -80,16 +81,10 @@ export const PersonForm = ({newPerson, setNewPerson, persons, setPersons, setNot
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                name: <input type='text' onChange={handleChangeName} value={newPerson.name}/>
-            </div>
-            <div>
-                number: <input type='text' onChange={handleChangeTfno} value={newPerson.tfno}/>
-            </div>
-            <div>
-                <button type="submit">add</button>
-            </div>
+        <form className='contact-form' onSubmit={handleSubmit}>
+            <input placeholder='Name...' type='text' onChange={handleChangeName} value={newPerson.name}/>
+            <input placeholder='Number...' type='tel' onChange={handleChangeTfno} value={newPerson.tfno}/>
+            <button type='submit'>Add Contact</button>
         </form>
     )
 }

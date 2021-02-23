@@ -4,6 +4,7 @@ import {Filter} from "./Filter"
 import {Persons} from "./Persons"
 import {getPersons} from "./service";
 import {Notification} from "./Notification";
+import './styles/App.css'
 
 const INITIAL_NEW_PERSON = {
     name: '',
@@ -24,23 +25,13 @@ const App = () => {
 
 
     return (
-        <div>
-            <h1>Phonebook</h1>
+        <div className='wrapper'>
+            <h1>Contacts</h1>
             <Notification {...notification}/>
             <Filter
                 filter={filter}
                 setFilter={setFilter}
             />
-            <h2>Add a new</h2>
-            <PersonForm
-                newPerson={newPerson}
-                setNewPerson={setNewPerson}
-                persons={persons}
-                setPersons={setPersons}
-                setNotification={setNotification}
-                INITIAL_NEW_PERSON={INITIAL_NEW_PERSON}
-            />
-            <h2>Numbers</h2>
             {persons.length === 0 ?
                 <p>Empty list</p> :
                 <Persons
@@ -49,6 +40,15 @@ const App = () => {
                     filter={filter}
                 />
             }
+            <PersonForm
+                newPerson={newPerson}
+                setNewPerson={setNewPerson}
+                persons={persons}
+                setPersons={setPersons}
+                setNotification={setNotification}
+                INITIAL_NEW_PERSON={INITIAL_NEW_PERSON}
+            />
+            
 
         </div>
     )
