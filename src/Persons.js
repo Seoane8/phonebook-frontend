@@ -20,7 +20,7 @@ export const Persons = ({data, filter, setPersons}) => {
     }
 
     return (
-        <ul>
+        <ul className="divide-y divide-gray-100 mx-2 my-4 md:col-span-3 mb-48 md:mb-4">
             {data
                 .filter(({name}) =>
                     name.toLowerCase().includes(filter.toLowerCase())

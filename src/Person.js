@@ -1,17 +1,19 @@
-import './styles/Person.css'
+
 
 export const Person = ({person, handleDelete}) => {
     const {name, tfno, id} = person
 
     return (
-        <li className='contact'>
-            <img className='contact-image' src='./person.svg' alt='Person icon' />
-            <div className='contact-info'>
-                <strong>{name} </strong>
-                <span>{tfno}</span>
+        <li className='flex space-x-4 px-5 py-3 content-center'>
+            <div className='m-auto'>
+                <img width='40px' height='40px' className='bg-gray-100 rounded-full' src='./person.svg' alt='Person icon' />
             </div>
-            <button className='delete-button' onClick={handleDelete(id, name)}>
-                <img src='./trash.svg' alt='Delete' />
+            <div className='flex-grow'>
+                <strong>{name}</strong>
+                <span className='block text-xs text-gray-600'>{tfno}</span>
+            </div>
+            <button className='m-auto' onClick={handleDelete(id, name)}>
+                <img width='25px' height='25px' src='./trash.svg' alt='Trash' aria-label='Delete contact'  />
             </button>
         </li>
     )

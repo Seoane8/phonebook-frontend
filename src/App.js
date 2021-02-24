@@ -4,7 +4,6 @@ import {Filter} from "./Filter"
 import {Persons} from "./Persons"
 import {getPersons} from "./service";
 import {Notification} from "./Notification";
-import './styles/App.css'
 
 const INITIAL_NEW_PERSON = {
     name: '',
@@ -25,8 +24,8 @@ const App = () => {
 
 
     return (
-        <div className='wrapper'>
-            <h1>Contacts</h1>
+        <div className='grid grid-cols-1 md:grid-cols-5 max-w-screen-lg mx-auto'>
+            <h1 className="md:col-span-5 text-3xl my-4 mx-auto">Contacts</h1>
             <Notification {...notification}/>
             <Filter
                 filter={filter}

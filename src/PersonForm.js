@@ -1,5 +1,4 @@
 import {postPerson, updatePerson} from "./service";
-import './styles/PersonForm.css'
 
 export const PersonForm = ({newPerson, setNewPerson, persons, setPersons, setNotification, INITIAL_NEW_PERSON}) => {
 
@@ -80,11 +79,41 @@ export const PersonForm = ({newPerson, setNewPerson, persons, setPersons, setNot
         )
     }
 
+    const formStyle = ' bg-gray-200 fixed bottom-0 flex flex-row flex-wrap '+
+        'justify-between content-start space-y-4 p-6 pt-4 '+
+        'md:sticky md:col-start-4 md:col-span-2 md:row-start-2 md:row-end-4 md:h-full'
+
+    const baseInputStyle = 'bg-gray-50 p-2 rounded-lg shadow-md outline-none '+
+        'transition-all duration-75 ease-in-out focus:ring-2'
+
+    const buttonStyle = 'bg-gray-50 inline w-10 p-1.5 rounded-full shadow-lg '+
+        'transition-all duration-500 ease-in-out transform hover:scale-125 hover:bg-blue-500 '+
+        'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-200'
+
     return (
-        <form className='contact-form' onSubmit={handleSubmit}>
-            <input placeholder='Name...' type='text' onChange={handleChangeName} value={newPerson.name}/>
-            <input placeholder='Number...' type='tel' onChange={handleChangeTfno} value={newPerson.tfno}/>
-            <button type='submit'>Add Contact</button>
+        <form className={formStyle} onSubmit={handleSubmit}>
+            <h2 className='m-auto'>Add new contact</h2>
+            <input 
+                className={baseInputStyle+' w-full'} 
+                placeholder='Name...' 
+                type='text' 
+                onChange={handleChangeName} 
+                value={newPerson.name} 
+                aria-label='Contact name'
+            />
+            <input 
+                className={baseInputStyle+' w-3/4 inline'} 
+                placeholder='Number...' 
+                type='tel' 
+                onChange={handleChangeTfno} 
+                value={newPerson.tfno} 
+                aria-label='Telephone number' 
+            />
+            <button className={buttonStyle} type='submit' aria-label="Add contact">
+                <svg viewBox="0 0 110 110" className='stroke-current text-blue-500 duration-500 ease-in-out hover:text-gray-50'>
+                    <path d="M 55,0 l 0,120 M 0,56 l 120,0" strokeWidth="15" />
+                </svg>
+            </button>
         </form>
     )
 }
