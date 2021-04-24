@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ENDPOINT = 'http://localhost:3001/api/persons'
+const ENDPOINT = '/api/notes'
 
 export const getPersons = () => {
     return axios
