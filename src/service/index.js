@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ENDPOINT = '/api/notes'
+const ENDPOINT = '/api/persons'
 
 export const getPersons = () => {
     return axios
