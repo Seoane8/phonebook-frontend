@@ -14,6 +14,12 @@ export const PersonForm = ({newPerson, setNewPerson, persons, setPersons, setNot
             tfno: event.target.value
         }))
 
+    const notifyError = (msg) => 
+        setNotification({
+            text: msg,
+            type: 'error'
+        })
+
     const handleSubmit = (event) => {
         event.preventDefault()
 
@@ -23,12 +29,14 @@ export const PersonForm = ({newPerson, setNewPerson, persons, setPersons, setNot
             return submitAddedPerson(personsWithSameName[0])
         }
 
-        postPerson(newPerson).then(person => {
+        postPerson(newPerson).then(response => {
+            if (response.error) return notifyError(response.error)
+
             setNotification({
-                text: `Added ${person.name}`,
+                text: `Added ${response.name}`,
                 type: 'message'
             })
-            setPersons(prevPersons => [...prevPersons, person])
+            setPersons(prevPersons => [...prevPersons, response])
         })
 
         setNewPerson(INITIAL_NEW_PERSON)
@@ -48,14 +56,16 @@ export const PersonForm = ({newPerson, setNewPerson, persons, setPersons, setNot
         }
 
         updatePerson(newPerson, id)
-            .then(updatedPerson => {
+            .then(response => {
+                if (response.error) return notifyError(response.error)
+
                 setPersons(prevPersons =>
                     prevPersons.map(person =>
-                        person.id === id ? updatedPerson : person,
+                        person.id === id ? response : person,
                     )
                 )
                 setNotification({
-                    text: `Updated ${updatedPerson.name}`,
+                    text: `Updated ${response.name}`,
                     type: 'message'
                 })
             })
@@ -66,10 +76,7 @@ export const PersonForm = ({newPerson, setNewPerson, persons, setPersons, setNot
                         person.id !== id
                     )
                 )
-                setNotification({
-                    text: `Information of ${newPerson.name} has already been removed from server`,
-                    type: 'error'
-                })
+                notifyError(`Information of ${newPerson.name} has already been removed from server`)
             })
 
         setNewPerson(INITIAL_NEW_PERSON)

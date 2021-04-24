@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ENDPOINT = 'https://cryptic-sea-40817.herokuapp.com/api/persons'
+const ENDPOINT = 'http://localhost:3001/api/persons'
 
 export const getPersons = () => {
     return axios
@@ -12,6 +12,7 @@ export const postPerson = (person) => {
     return axios
         .post(ENDPOINT, person)
         .then(response => response.data)
+        .catch(err => err.response.data)
 }
 
 export const deletePerson = (id) => {
@@ -24,4 +25,5 @@ export const updatePerson = (person, id) => {
     return axios
         .put(`${ENDPOINT}/${id}`, person)
         .then(response => response.data)
+        .catch(err => err.response.data)
 }
